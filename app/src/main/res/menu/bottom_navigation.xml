@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/acttion_exercise"
+        android:enabled="true"
+        android:title="Excercise"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/action_exercise_list"
+        android:enabled="true"
+        android:title="List of Excercises"
+        app:showAsAction="ifRoom" />
+</menu>

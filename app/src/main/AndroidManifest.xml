@@ -16,6 +16,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".BottomNavigationActivity"
+            android:label="@string/title_activity_bottom_navigation" />
+        <activity
+            android:name=".ListOfExercisesActivity"
+            android:label="@string/title_activity_list_of_exercises"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

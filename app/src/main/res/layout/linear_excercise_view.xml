@@ -124,4 +124,11 @@
         android:layout_marginStart="8dp"
         app:srcCompat="@android:drawable/ic_media_play" />
 
+    <android.support.design.widget.BottomNavigationView
+        android:id="@+id/navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?android:attr/windowBackground"
+        app:menu="@menu/navigation" />
+
 </LinearLayout>
