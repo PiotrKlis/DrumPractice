@@ -3,12 +3,12 @@ package com.piotrklis.drumpractice;
 
 import java.util.List;
 
-public class ExerciseList {
+public class ExerciseSet {
 
     private Exercise exercise;
     private String name;
 
-    public ExerciseList(Exercise exercise, List<Exercise> exerciseList, String name) {
+    public ExerciseSet(Exercise exercise, String name) {
         this.exercise = exercise;
         this.name = name;
     }

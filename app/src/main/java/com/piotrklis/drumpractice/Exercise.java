@@ -1,16 +1,16 @@
 package com.piotrklis.drumpractice;
 
 
-import android.graphics.drawable.Drawable;
+import java.util.List;
 
 public class Exercise {
 
     private long overallTime;
-    private int exercisesDone;
+    private int exercisesDone = 0;
     private String name;
-    private String nextExerciseName;
+    private String nextExerciseName = "";
     private long timeLeft;
-    private int images;
+    private List<Integer> images;
 
     public long getOverallTime() {
         return overallTime;
@@ -52,19 +52,17 @@ public class Exercise {
         this.timeLeft = timeLeft;
     }
 
-    public Drawable getImages() {
+    public List<Integer> getImages() {
         return images;
     }
 
-    public void setImages(Drawable images) {
+    public void setImages(List<Integer> images) {
         this.images = images;
     }
 
-    public Exercise(long overallTime, int exercisesDone, String name, String nextExerciseName, long timeLeft, Drawable images) {
+    public Exercise(long overallTime, String name, long timeLeft, List<Integer> images) {
         this.overallTime = overallTime;
-        this.exercisesDone = exercisesDone;
         this.name = name;
-        this.nextExerciseName = nextExerciseName;
         this.timeLeft = timeLeft;
         this.images = images;
 
