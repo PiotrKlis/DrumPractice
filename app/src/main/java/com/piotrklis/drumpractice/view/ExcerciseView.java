@@ -1,4 +1,4 @@
-package com.piotrklis.drumpractice;
+package com.piotrklis.drumpractice.view;
 
 import android.content.Context;
 import android.widget.EditText;
@@ -6,6 +6,8 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.piotrklis.drumpractice.R;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".ExerciseActivity"
+            android:name=".activity.ExerciseActivity"
             android:label="Dupa"
             android:screenOrientation="portrait">
             <intent-filter>
@@ -18,7 +18,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ListOfExercisesActivity" />
-        <activity android:name=".BottomNavigationActivity" />
+        <activity android:name=".activity.ListOfExercisesActivity" />
+        <activity android:name=".activity.BottomNavigationActivity" />
     </application>
 </manifest>

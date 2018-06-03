@@ -1,4 +1,4 @@
-package com.piotrklis.drumpractice;
+package com.piotrklis.drumpractice.activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -8,8 +8,13 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.piotrklis.drumpractice.data.ExercisesLocalSource;
+import com.piotrklis.drumpractice.R;
+import com.piotrklis.drumpractice.model.Exercise;
+import com.piotrklis.drumpractice.model.ExerciseSet;
+import com.piotrklis.drumpractice.view.ExcerciseView;
+
 import java.util.List;
-import java.util.Timer;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -40,19 +45,23 @@ public class ExerciseActivity extends AppCompatActivity {
         view = new ExcerciseView(this);
         setContentView(view);
 
-        ExerciseSet exerciseSet = loadExercise();
+        ExerciseSet exerciseSet = loadExerciseSet();
         showExercise(exerciseSet);
     }
 
-    private ExerciseSet loadExercise() {
+    private ExerciseSet loadExerciseSet() {
         List<ExerciseSet> exercisesLocalSources = new ExercisesLocalSource().getListOfExercises();
-        ExerciseSet currentExerciseSet = exercisesLocalSources.get(0);
-        showExercise(currentExerciseSet);
-        return null;
+        return exercisesLocalSources.get(0);
+
     }
 
     private void showExercise(ExerciseSet exerciseSet) {
         ExerciseSet set = exerciseSet;
+        String nameOfTheSet = set.getName();
+        List<Exercise> exercises = set.getExercise();
+
+        currentExerciseName.setText(nameOfTheSet);
+        
 
         //overallTime.setText(set.get);
     }

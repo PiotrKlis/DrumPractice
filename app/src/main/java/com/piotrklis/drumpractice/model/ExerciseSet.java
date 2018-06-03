@@ -1,24 +1,24 @@
-package com.piotrklis.drumpractice;
+package com.piotrklis.drumpractice.model;
 
 
 import java.util.List;
 
 public class ExerciseSet {
 
-    private Exercise exercise;
+    private List<Exercise> exercise;
     private String name;
 
-    public ExerciseSet(Exercise exercise, String name) {
+    public ExerciseSet(List<Exercise> exercise, String name) {
         this.exercise = exercise;
         this.name = name;
     }
 
 
-    public Exercise getExercise() {
+    public List<Exercise> getExercise() {
         return exercise;
     }
 
-    public void setExercise(Exercise exercise) {
+    public void setExercise(List<Exercise> exercise) {
         this.exercise = exercise;
     }
 
