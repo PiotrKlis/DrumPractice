@@ -41,7 +41,6 @@ public class ExercisesLocalSource {
                 list.add(R.drawable.ic_dashboard_black_24dp);
                 list.add(R.drawable.ic_home_black_24dp);
                 list.add(R.drawable.ic_launcher_background);
-                list.add(R.drawable.ic_launcher_foreground);
                 list.add(R.drawable.ic_notifications_black_24dp);
             case 2:
                 list.add(R.drawable.ic_music);

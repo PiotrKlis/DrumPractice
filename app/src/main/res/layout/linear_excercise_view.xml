@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.piotrklis.drumpractice.MainActivity">
+    tools:context="com.piotrklis.drumpractice.ExerciseActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -24,8 +24,7 @@
                 android:id="@+id/editText_main_overallTime"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:inputType="time" />
+                android:layout_marginStart="8dp" />
 
         </LinearLayout>
 

@@ -7,7 +7,7 @@ public class Exercise {
 
     private long overallTime;
     private int exercisesDone = 0;
-    private String name;
+    private String currentExerciseName;
     private String nextExerciseName = "";
     private long timeLeft;
     private List<Integer> images;
@@ -28,12 +28,12 @@ public class Exercise {
         this.exercisesDone = exercisesDone;
     }
 
-    public String getName() {
-        return name;
+    public String getCurrentExerciseName() {
+        return currentExerciseName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setCurrentExerciseName(String currentExerciseName) {
+        this.currentExerciseName = currentExerciseName;
     }
 
     public String getNextExerciseName() {
@@ -60,9 +60,9 @@ public class Exercise {
         this.images = images;
     }
 
-    public Exercise(long overallTime, String name, long timeLeft, List<Integer> images) {
+    public Exercise(long overallTime, String currentExerciseName, long timeLeft, List<Integer> images) {
         this.overallTime = overallTime;
-        this.name = name;
+        this.currentExerciseName = currentExerciseName;
         this.timeLeft = timeLeft;
         this.images = images;
 
