@@ -7,12 +7,21 @@ public class ExerciseSet {
 
     private List<Exercise> exercise;
     private String name;
+    private int tempo;
 
-    public ExerciseSet(List<Exercise> exercise, String name) {
+    public ExerciseSet(List<Exercise> exercise, String name, int tempo) {
         this.exercise = exercise;
         this.name = name;
+        this.tempo = tempo;
     }
 
+    public int getTempo() {
+        return tempo;
+    }
+
+    public void setTempo(int tempo) {
+        this.tempo = tempo;
+    }
 
     public List<Exercise> getExercise() {
         return exercise;

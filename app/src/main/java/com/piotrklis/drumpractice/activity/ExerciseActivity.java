@@ -8,7 +8,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.piotrklis.drumpractice.data.ExercisesLocalSource;
+import com.mobileapps.pk.external.data.ExercisesLocalSource;
 import com.piotrklis.drumpractice.R;
 import com.piotrklis.drumpractice.model.Exercise;
 import com.piotrklis.drumpractice.model.ExerciseSet;
@@ -61,7 +61,7 @@ public class ExerciseActivity extends AppCompatActivity {
         List<Exercise> exercises = set.getExercise();
 
         currentExerciseName.setText(nameOfTheSet);
-        
+
 
         //overallTime.setText(set.get);
     }
