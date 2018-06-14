@@ -8,7 +8,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.mobileapps.pk.external.data.ExercisesLocalSource;
+//import com.mobileapps.pk.external.data.ExercisesLocalSource;
 import com.piotrklis.drumpractice.R;
 import com.piotrklis.drumpractice.model.Exercise;
 import com.piotrklis.drumpractice.model.ExerciseSet;
@@ -41,19 +41,19 @@ public class ExerciseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ButterKnife.bind(this);
+//        ButterKnife.bind(this);
         view = new ExcerciseView(this);
         setContentView(view);
 
-        ExerciseSet exerciseSet = loadExerciseSet();
-        showExercise(exerciseSet);
+//        ExerciseSet exerciseSet = loadExerciseSet();
+//        showExercise(exerciseSet);
     }
 
-    private ExerciseSet loadExerciseSet() {
-        List<ExerciseSet> exercisesLocalSources = new ExercisesLocalSource().getListOfExercises();
-        return exercisesLocalSources.get(0);
-
-    }
+//    private ExerciseSet loadExerciseSet() {
+////        List<ExerciseSet> exercisesLocalSources = new ExercisesLocalSource().getListOfExercises();
+////        return exercisesLocalSources.get(0);
+//
+//    }
 
     private void showExercise(ExerciseSet exerciseSet) {
         ExerciseSet set = exerciseSet;
