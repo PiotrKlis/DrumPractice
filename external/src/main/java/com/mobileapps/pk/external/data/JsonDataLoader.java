@@ -21,13 +21,13 @@ public class JsonDataLoader {
     private final Gson gson;
     private final Context context;
 
-    public JsonDataLoader JsonDataLoader[StringFileReader fileReader, Gson gson, Context context){
+    public JsonDataLoader(StringFileReader fileReader, Gson gson, Context context) {
         this.fileReader = fileReader;
         this.gson = gson;
         this.context = context;
     }
 
-    public Single<List<ExerciseSet>> getSavedFaq() {
+    public Single<List<ExerciseSet>> getSavedExerciseSets() {
         return Single.fromCallable(() -> {
             File file = getStoredFAQFile();
             String stringFromFile = fileReader.readAsStringFromFile(file);

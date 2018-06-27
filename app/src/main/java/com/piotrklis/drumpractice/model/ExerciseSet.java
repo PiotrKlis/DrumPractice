@@ -1,10 +1,11 @@
 package com.piotrklis.drumpractice.model;
 
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.List;
 
 public class ExerciseSet {
-
     private List<Exercise> exercise;
     private String name;
     private int tempo;

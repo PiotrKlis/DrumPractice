@@ -44,7 +44,7 @@ public class ExercisesLocalSource {
 //        List<Exercise> exerciseList = new ArrayList<>();
 //
 //        for (int i = 0; i < images.size(); i++) {
-//            Exercise exercise = new Exercise();
+//            ExerciseDto exercise = new ExerciseDto();
 //            exercise.setImage(images.get(i));
 //            exercise.setName(names.get(i));
 //            exercise.setTime(timers.get(i));

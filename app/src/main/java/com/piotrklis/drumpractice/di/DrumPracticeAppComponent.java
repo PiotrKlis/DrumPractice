@@ -14,5 +14,4 @@ public interface DrumPracticeAppComponent {
     Context getContext();
 
     Gson getGson();
-
 }

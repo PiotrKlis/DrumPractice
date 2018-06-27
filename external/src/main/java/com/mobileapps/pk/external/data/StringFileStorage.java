@@ -7,6 +7,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
+import javax.inject.Inject;
+
 public class StringFileStorage implements StringFileReader {
 
     @Inject

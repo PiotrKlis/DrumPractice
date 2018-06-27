@@ -1,0 +1,5 @@
+{"ExerciseSet" : [{"ExerciseSetName":"Very First ExerciseSet", "Tempo":"100", "Exercises" :
+[{"Time" : "1000", "ExerciseName" : "Paradiddle", "Image" : "Paradiddle"}, {"Time" : "2000", "ExerciseName" : "Doubles", "Image" : "Doubles"}, {"Time" : "1500", "ExerciseName" : "16th notes", "Image" : "SixteenthNotes"}]}, {"ExerciseName":"Second ExerciseSet", "Tempo":"80", "Exercises" :
+[{"Time" : "4000", "ExerciseName" : "Para-Diddle-Diddle", "Image" : "Diddle"}, {"Time" : "2000", "ExerciseName" : "wtf", "Image" : "wtf"}, {"Time" : "1500", "ExerciseName" : "16th notes", "Image" : "lol"}]}
+]}
+
