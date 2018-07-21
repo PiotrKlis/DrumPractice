@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".activity.ExerciseActivity"
+            android:name="com.drumpractice.app.activity.ExerciseActivity"
             android:label="Dupa"
             android:screenOrientation="portrait">
             <intent-filter>
@@ -18,7 +18,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.ListOfExercisesActivity" />
-        <activity android:name=".activity.BottomNavigationActivity" />
+        <activity android:name="com.drumpractice.app.activity.ListOfExercisesActivity" />
+        <activity android:name="com.drumpractice.app.activity.BottomNavigationActivity" />
     </application>
 </manifest>
