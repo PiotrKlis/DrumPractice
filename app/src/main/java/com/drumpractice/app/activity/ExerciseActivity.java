@@ -11,13 +11,16 @@ import android.widget.TextView;
 import com.drumpractice.app.model.Exercise;
 import com.drumpractice.app.model.ExerciseSet;
 import com.drumpractice.app.view.ExcerciseView;
+import com.drumpractice.domain.utils.JsonDataLoader;
 import com.piotrklis.drumpractice.R;
 
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
+import io.reactivex.Observable;
 
-public class ExerciseActivity extends AppCompatActivity {
+public class ExerciseActivity extends AppCompatActivity implements JsonDataLoader {
 
     @BindView(R.id.editText_main_overallTime)
     protected EditText overallTime;
@@ -35,24 +38,28 @@ public class ExerciseActivity extends AppCompatActivity {
     protected ImageButton button;
     private View view;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        ButterKnife.bind(this);
+        ButterKnife.bind(this);
         view = new ExcerciseView(this);
         setContentView(view);
 
-//        ExerciseSet exerciseSet = loadExerciseSet();
-//        showExercise(exerciseSet);
+        loadFirstExercise();
     }
 
-//    private ExerciseSet loadExerciseSet() {
-////        List<ExerciseSet> exercisesLocalSources = new ExercisesLocalSource().getListOfExercises();
-////        return exercisesLocalSources.get(0);
-//
-//    }
+    private void loadFirstExercise() {
+        ExerciseSet exerciseSet = loadExerciseSet().get(0);
+        renderExercise(exerciseSet);
+    }
 
-    private void showExercise(ExerciseSet exerciseSet) {
+    private List<ExerciseSet> loadExerciseSet() {
+        List<ExerciseSet> exerciseSets = new ExercisesLocalSource().getListOfExercises();
+        return exerciseSets;
+    }
+
+    private void renderExercise(ExerciseSet exerciseSet) {
         ExerciseSet set = exerciseSet;
         String nameOfTheSet = set.getName();
         List<Exercise> exercises = set.getExercise();
@@ -63,4 +70,8 @@ public class ExerciseActivity extends AppCompatActivity {
     }
 
 
+    @Override
+    public Observable loadData() {
+        return null;
+    }
 }

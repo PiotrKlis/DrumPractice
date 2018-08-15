@@ -5,6 +5,9 @@ import android.app.Application;
 import com.drumpractice.app.di.DaggerDrumPracticeAppComponent;
 import com.drumpractice.app.di.DrumPracticeAppComponent;
 import com.drumpractice.app.di.DrumPracticeAppModule;
+import com.drumpractice.external.RealmConnectionFactory;
+
+import io.reactivex.plugins.RxJavaPlugins;
 
 public class DrumPracticeApp extends Application {
 
@@ -31,16 +34,10 @@ public class DrumPracticeApp extends Application {
         super.onCreate();
         context = this;
         initializeInjector();
-        initializeRxErrorHandling();
-        //initializeRealm();
+        initializeRealm();
     }
 
-//    private void initializeRealm() {
-//        RealmConnectionFactory.initializeRealm(this);
-//    }
-
-    private void initializeRxErrorHandling() {
-       // RxJavaPlugins.setErrorHandler(new RxErrorHandler());
+    private void initializeRealm() {
+        RealmConnectionFactory.initializeRealm(this);
     }
-
 }

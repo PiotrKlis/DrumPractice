@@ -11,18 +11,19 @@ import io.reactivex.functions.Function;
 
 public class ExerciseSetRepositoryImpl implements ExerciseSetRepository {
 
+    private final ExerciseSetLocalDataSource exerciseSetLocalDataSource;
+
+    public ExerciseSetRepositoryImpl(ExerciseSetLocalDataSource exerciseSetLocalDataSource) {
+        this.exerciseSetLocalDataSource = exerciseSetLocalDataSource;
+    }
 
     @Override
     public Observable<Boolean> isDatabaseEmpty() {
-//        return mAirportLocalDataSource.findFirst()
-//                .map(airportEntity -> false)
-//                .onErrorResumeNext(new Function<Throwable, ObservableSource<? extends Boolean>>() {
-//                    @Override
-//                    public ObservableSource<? extends Boolean> apply(Throwable throwable) throws Exception {
-//                        return Observable.just(true);
-//                    }
-//                });
-        return null;
+        return exerciseSetLocalDataSource.findFirst()
+                .map(exerciseSetEntity -> false)
+                .onErrorResumeNext(throwable -> {
+                    return Observable.just(true);
+                });
     }
 
     @Override

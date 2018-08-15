@@ -1,8 +1,9 @@
-package com.drumpractice.external;
+package com.drumpractice.external.storage;
 
 import android.support.annotation.NonNull;
 
 import com.drumpractice.domain.model.ExerciseSet;
+import com.drumpractice.external.StringFileReader;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 

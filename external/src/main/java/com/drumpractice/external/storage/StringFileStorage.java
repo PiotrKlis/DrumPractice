@@ -1,4 +1,6 @@
-package com.drumpractice.external;
+package com.drumpractice.external.storage;
+
+import com.drumpractice.external.StringFileReader;
 
 import java.io.BufferedReader;
 import java.io.File;
