@@ -1,6 +1,6 @@
-package com.drumpractice.app.viewmodel;
+package com.drumpractice.app.exercise;
 
-import com.drumpractice.app.model.ExerciseSet;
+import com.drumpractice.app.exercise_list.ExerciseSet;
 import com.drumpractice.domain.usecase.FetchExercisesUseCase;
 
 import java.util.List;
@@ -17,8 +17,8 @@ public class ExerciseViewModel {
     private Observable<Throwable> errors;
 
     @Inject
-    public ExerciseViewModel(@NonNull final FetchExercisesUseCase fetchExercisesUseCase1) {
-        this.fetchExercisesUseCase = fetchExercisesUseCase1;
+    public ExerciseViewModel(@NonNull final FetchExercisesUseCase fetchExercisesUseCase) {
+        this.fetchExercisesUseCase = fetchExercisesUseCase;
     }
 
 }

@@ -1,4 +1,4 @@
-package com.drumpractice.app.activity;
+package com.drumpractice.app.exercise_list;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;

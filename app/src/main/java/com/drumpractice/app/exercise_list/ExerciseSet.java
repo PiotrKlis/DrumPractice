@@ -1,5 +1,7 @@
-package com.drumpractice.app.model;
+package com.drumpractice.app.exercise_list;
 
+
+import com.drumpractice.app.exercise.Exercise;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package com.drumpractice.app.model;
+package com.drumpractice.app.exercise;
 
 
 public class Exercise {

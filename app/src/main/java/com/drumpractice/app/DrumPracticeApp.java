@@ -7,10 +7,7 @@ import com.drumpractice.app.di.DrumPracticeAppComponent;
 import com.drumpractice.app.di.DrumPracticeAppModule;
 import com.drumpractice.external.RealmConnectionFactory;
 
-import io.reactivex.plugins.RxJavaPlugins;
-
 public class DrumPracticeApp extends Application {
-
 
     private static DrumPracticeApp context;
     private static DrumPracticeAppComponent applicationComponent;

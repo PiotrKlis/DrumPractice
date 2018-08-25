@@ -1,4 +1,4 @@
-package com.drumpractice.app.activity;
+package com.drumpractice.app.exercise;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -8,9 +8,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.drumpractice.app.model.Exercise;
-import com.drumpractice.app.model.ExerciseSet;
-import com.drumpractice.app.view.ExcerciseView;
+import com.drumpractice.app.exercise_list.ExerciseSet;
 import com.drumpractice.domain.utils.JsonDataLoader;
 import com.piotrklis.drumpractice.R;
 
@@ -43,11 +41,13 @@ public class ExerciseActivity extends AppCompatActivity implements JsonDataLoade
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ButterKnife.bind(this);
-        view = new ExcerciseView(this);
+        view = new ExcerciseFragment(this);
         setContentView(view);
 
         loadFirstExercise();
     }
+
+
 
     private void loadFirstExercise() {
         ExerciseSet exerciseSet = loadExerciseSet().get(0);
@@ -55,8 +55,8 @@ public class ExerciseActivity extends AppCompatActivity implements JsonDataLoade
     }
 
     private List<ExerciseSet> loadExerciseSet() {
-        List<ExerciseSet> exerciseSets = new ExercisesLocalSource().getListOfExercises();
-        return exerciseSets;
+//        List<ExerciseSet> exerciseSets = new
+        return null;
     }
 
     private void renderExercise(ExerciseSet exerciseSet) {
