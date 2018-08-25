@@ -12,11 +12,15 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.drumpractice.app.exercise_list.ExerciseSet;
 import com.piotrklis.drumpractice.R;
+
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
+import io.reactivex.disposables.CompositeDisposable;
 
 public class ExcerciseFragment extends Fragment {
 
@@ -35,8 +39,10 @@ public class ExcerciseFragment extends Fragment {
     @BindView(R.id.imageButton_main_power)
     ImageButton powerButton;
 
+    private CompositeDisposable subscriptions = new CompositeDisposable();
     private Unbinder unbinder;
     private ExerciseComponent exerciseComponent;
+    private ExerciseViewModel viewModel;
 
     public static ExcerciseFragment newInstance() {
         return new ExcerciseFragment();
@@ -44,7 +50,7 @@ public class ExcerciseFragment extends Fragment {
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = super.onCreateView(inflater, container, savedInstanceState);
+        View view = inflater.inflate(R.layout.linear_excercise_view, container, false);
         unbinder = ButterKnife.bind(this, view);
         return view;
     }
@@ -53,9 +59,26 @@ public class ExcerciseFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         createViewModel();
+        bindViewModel();
+    }
+
+    private void bindViewModel() {
+        subscriptions.dispose();
+        subscriptions = new CompositeDisposable();
+        subscriptions.add(viewModel.getExerciseSet().subscribe(this::renderExercise));
     }
 
     private ExerciseViewModel createViewModel() {
-        return null;
+        return viewModel = DaggerExerciseComponent
+                .builder()
+                .build()
+                .exerciseViewModel();
+    }
+
+    private void renderExercise(ExerciseSet exerciseSet) {
+        ExerciseSet set = exerciseSet;
+        String nameOfTheSet = set.getName();
+        List<Exercise> exercises = set.getExercise();
+
     }
 }

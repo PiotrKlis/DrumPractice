@@ -8,6 +8,7 @@ import java.util.List;
 import javax.inject.Inject;
 
 import io.reactivex.Observable;
+import io.reactivex.Single;
 import io.reactivex.annotations.NonNull;
 
 public class ExerciseViewModel {
@@ -21,4 +22,7 @@ public class ExerciseViewModel {
         this.fetchExercisesUseCase = fetchExercisesUseCase;
     }
 
+    public Single<ExerciseSet> getExerciseSet() {
+        return null;
+    }
 }
