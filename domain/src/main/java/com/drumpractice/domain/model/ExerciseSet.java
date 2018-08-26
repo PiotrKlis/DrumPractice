@@ -3,11 +3,13 @@ package com.drumpractice.domain.model;
 import java.util.List;
 
 public class ExerciseSet {
+    private int id;
     private List<Exercise> exercise;
     private String name;
     private int tempo;
 
-    public ExerciseSet(List<Exercise> exercise, String name, int tempo) {
+    public ExerciseSet(int id, List<Exercise> exercise, String name, int tempo) {
+        this.id = id;
         this.exercise = exercise;
         this.name = name;
         this.tempo = tempo;
@@ -35,5 +37,13 @@ public class ExerciseSet {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

@@ -1,4 +1,4 @@
-package com.drumpractice.external.repository;
+package com.drumpractice.domain;
 
 import com.drumpractice.domain.model.ExerciseSet;
 
@@ -13,5 +13,11 @@ public interface ExerciseSetRepository {
 
     Single<List<ExerciseSet>> getExerciseSets();
 
+    Single<ExerciseSet> getSelectedExercise(int numberOfExerciseSet);
+
     Single<List<ExerciseSet>> saveExerciseSets();
+
+    Single<Integer> getSelectedExerciseId();
+
+    Single<Integer> setSelectedExerciseId();
 }

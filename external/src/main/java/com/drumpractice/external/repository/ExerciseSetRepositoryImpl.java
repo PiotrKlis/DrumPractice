@@ -1,13 +1,12 @@
 package com.drumpractice.external.repository;
 
+import com.drumpractice.domain.ExerciseSetRepository;
 import com.drumpractice.domain.model.ExerciseSet;
 
 import java.util.List;
 
 import io.reactivex.Observable;
-import io.reactivex.ObservableSource;
 import io.reactivex.Single;
-import io.reactivex.functions.Function;
 
 public class ExerciseSetRepositoryImpl implements ExerciseSetRepository {
 
@@ -28,6 +27,11 @@ public class ExerciseSetRepositoryImpl implements ExerciseSetRepository {
 
     @Override
     public Single<List<ExerciseSet>> getExerciseSets() {
+        return null;
+    }
+
+    @Override
+    public Single<ExerciseSet> getSelectedExercise(int numberOfExerciseSet) {
         return null;
     }
 
