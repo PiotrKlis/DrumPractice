@@ -4,7 +4,7 @@ import com.drumpractice.domain.ExerciseSetRepository;
 
 import javax.inject.Inject;
 
-import io.reactivex.Single;
+import io.reactivex.Observable;
 import io.reactivex.annotations.NonNull;
 
 public class FetchSelectedExerciseId {
@@ -16,7 +16,7 @@ public class FetchSelectedExerciseId {
         this.exerciseSetRepository = exerciseSetRepository;
     }
 
-    public Single<Integer> execute() {
+    public Observable<Integer> fetchId() {
         return exerciseSetRepository.getSelectedExerciseId();
     }
 

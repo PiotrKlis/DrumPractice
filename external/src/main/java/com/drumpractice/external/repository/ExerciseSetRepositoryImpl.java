@@ -26,17 +26,27 @@ public class ExerciseSetRepositoryImpl implements ExerciseSetRepository {
     }
 
     @Override
-    public Single<List<ExerciseSet>> getExerciseSets() {
+    public Observable<List<ExerciseSet>> getExerciseSets() {
         return null;
     }
 
     @Override
-    public Single<ExerciseSet> getSelectedExercise(int numberOfExerciseSet) {
+    public Observable<ExerciseSet> getSelectedExercise(int numberOfExerciseSet) {
         return null;
     }
 
     @Override
-    public Single<List<ExerciseSet>> saveExerciseSets() {
+    public Observable<List<ExerciseSet>> saveExerciseSets() {
+        return null;
+    }
+
+    @Override
+    public Observable<Integer> getSelectedExerciseId() {
+        return null;
+    }
+
+    @Override
+    public Observable<Integer> setSelectedExerciseId() {
         return null;
     }
 }

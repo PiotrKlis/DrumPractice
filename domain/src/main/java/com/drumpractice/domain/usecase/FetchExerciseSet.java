@@ -5,19 +5,19 @@ import com.drumpractice.domain.model.ExerciseSet;
 
 import javax.inject.Inject;
 
-import io.reactivex.Single;
+import io.reactivex.Observable;
 import io.reactivex.annotations.NonNull;
 
-public class FetchExercise {
+public class FetchExerciseSet {
 
     private final ExerciseSetRepository exerciseSetRepository;
 
     @Inject
-    protected FetchExercise(@NonNull ExerciseSetRepository exerciseSetRepository) {
+    protected FetchExerciseSet(@NonNull ExerciseSetRepository exerciseSetRepository) {
         this.exerciseSetRepository = exerciseSetRepository;
     }
 
-    public Single<ExerciseSet> execute(int numberOfExerciseSet) {
+    public Observable<ExerciseSet> fetchExerciseSet(int numberOfExerciseSet) {
         return exerciseSetRepository.getSelectedExercise(numberOfExerciseSet);
     }
 }

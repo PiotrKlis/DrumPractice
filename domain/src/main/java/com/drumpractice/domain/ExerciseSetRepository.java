@@ -11,13 +11,13 @@ public interface ExerciseSetRepository {
 
     Observable<Boolean> isDatabaseEmpty();
 
-    Single<List<ExerciseSet>> getExerciseSets();
+    Observable<List<ExerciseSet>> getExerciseSets();
 
-    Single<ExerciseSet> getSelectedExercise(int numberOfExerciseSet);
+    Observable<ExerciseSet> getSelectedExercise(int numberOfExerciseSet);
 
-    Single<List<ExerciseSet>> saveExerciseSets();
+    Observable<List<ExerciseSet>> saveExerciseSets();
 
-    Single<Integer> getSelectedExerciseId();
+    Observable<Integer> getSelectedExerciseId();
 
-    Single<Integer> setSelectedExerciseId();
+    Observable<Integer> setSelectedExerciseId();
 }
