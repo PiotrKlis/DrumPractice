@@ -13,7 +13,7 @@ public class FetchExerciseSetUseCase {
     private final ExerciseSetRepository exerciseSetRepository;
 
     @Inject
-    protected FetchExerciseSetUseCase(@NonNull ExerciseSetRepository exerciseSetRepository) {
+    public FetchExerciseSetUseCase(@NonNull ExerciseSetRepository exerciseSetRepository) {
         this.exerciseSetRepository = exerciseSetRepository;
     }
 

@@ -5,12 +5,15 @@ import com.drumpractice.domain.model.ExerciseSet;
 
 import java.util.List;
 
+import javax.inject.Inject;
+
 import io.reactivex.Observable;
 
 public class ExerciseSetRepositoryImpl implements ExerciseSetRepository {
 
     private final ExerciseSetLocalDataSource exerciseSetLocalDataSource;
 
+    @Inject
     public ExerciseSetRepositoryImpl(ExerciseSetLocalDataSource exerciseSetLocalDataSource) {
         this.exerciseSetLocalDataSource = exerciseSetLocalDataSource;
     }

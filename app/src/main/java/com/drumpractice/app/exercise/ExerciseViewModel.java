@@ -14,7 +14,6 @@ import io.reactivex.subjects.PublishSubject;
 
 public class ExerciseViewModel {
 
-    @Inject
     private final FetchExerciseSetUseCase fetchExerciseSetUseCase;
     private Observable<ExerciseSet> exerciseSet;
     private Observable<Integer> integerObservable;

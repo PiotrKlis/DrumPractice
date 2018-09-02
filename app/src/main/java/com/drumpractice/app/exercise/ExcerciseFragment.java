@@ -12,10 +12,8 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.drumpractice.app.exercise_list.ExerciseSet;
+import com.drumpractice.domain.model.ExerciseSet;
 import com.piotrklis.drumpractice.R;
-
-import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -65,7 +63,7 @@ public class ExcerciseFragment extends Fragment {
     private void bindViewModel() {
         subscriptions.dispose();
         subscriptions = new CompositeDisposable();
-        subscriptions.add(viewModel.getExerciseSet().subscribe(this::renderExercise));
+        //subscriptions.add(viewModel.getExerciseSet().subscribe(exerciseSet -> renderExercise(exerciseSet)));
     }
 
     private ExerciseViewModel createViewModel() {
@@ -78,7 +76,5 @@ public class ExcerciseFragment extends Fragment {
     private void renderExercise(ExerciseSet exerciseSet) {
         ExerciseSet set = exerciseSet;
         String nameOfTheSet = set.getName();
-        List<Exercise> exercises = set.getExercise();
-
     }
 }
