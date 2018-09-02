@@ -14,7 +14,6 @@ import io.reactivex.subjects.PublishSubject;
 
 public class ExerciseViewModel {
 
-    private final FetchExerciseSetUseCase fetchExerciseSetUseCase;
     private Observable<ExerciseSet> exerciseSet;
     private Observable<Integer> integerObservable;
     private Single<Throwable> errors;
@@ -22,7 +21,6 @@ public class ExerciseViewModel {
 
     @Inject
     public ExerciseViewModel(@NonNull final FetchExerciseSetUseCase fetchExerciseSetUseCase) {
-        this.fetchExerciseSetUseCase = fetchExerciseSetUseCase;
         PublishSubject<Irrelevant> exerciseSetTrigger = PublishSubject.create();
         Observable<Notification<ExerciseSet>> materializedExerciseSet = exerciseSetTrigger
                 .startWith(Irrelevant.INSTANCE)

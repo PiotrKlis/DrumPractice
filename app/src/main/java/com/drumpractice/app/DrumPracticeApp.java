@@ -2,6 +2,7 @@ package com.drumpractice.app;
 
 import android.app.Application;
 
+import com.drumpractice.app.activity.BottomNavigationActivity;
 import com.drumpractice.app.di.DrumPracticeAppComponent;
 import com.drumpractice.external.RealmConnectionFactory;
 
@@ -30,6 +31,11 @@ public class DrumPracticeApp extends Application {
         context = this;
         //initializeInjector();
         initializeRealm();
+        initializeBottomNavigtion();
+    }
+
+    private void initializeBottomNavigtion() {
+        BottomNavigationActivity.startActivity(context);
     }
 
     private void initializeRealm() {
