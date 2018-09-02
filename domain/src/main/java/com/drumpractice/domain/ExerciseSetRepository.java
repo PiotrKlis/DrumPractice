@@ -13,7 +13,7 @@ public interface ExerciseSetRepository {
 
     Observable<List<ExerciseSet>> getExerciseSets();
 
-    Observable<ExerciseSet> getSelectedExercise(int numberOfExerciseSet);
+    Observable<ExerciseSet> getCurrentExerciseSet();
 
     Observable<List<ExerciseSet>> saveExerciseSets();
 

@@ -6,7 +6,6 @@ import com.drumpractice.domain.model.ExerciseSet;
 import java.util.List;
 
 import io.reactivex.Observable;
-import io.reactivex.Single;
 
 public class ExerciseSetRepositoryImpl implements ExerciseSetRepository {
 
@@ -31,7 +30,8 @@ public class ExerciseSetRepositoryImpl implements ExerciseSetRepository {
     }
 
     @Override
-    public Observable<ExerciseSet> getSelectedExercise(int numberOfExerciseSet) {
+    public Observable<ExerciseSet> getCurrentExerciseSet() {
+
         return null;
     }
 
