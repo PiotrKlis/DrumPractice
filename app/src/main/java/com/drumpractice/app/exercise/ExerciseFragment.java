@@ -20,7 +20,7 @@ import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import io.reactivex.disposables.CompositeDisposable;
 
-public class ExcerciseFragment extends Fragment {
+public class ExerciseFragment extends Fragment {
 
     @BindView(R.id.editText_main_overallTime)
     EditText overallTimeTimer;
@@ -42,8 +42,8 @@ public class ExcerciseFragment extends Fragment {
     private ExerciseComponent exerciseComponent;
     private ExerciseViewModel viewModel;
 
-    public static ExcerciseFragment newInstance() {
-        return new ExcerciseFragment();
+    public static ExerciseFragment newInstance() {
+        return new ExerciseFragment();
     }
 
     @Override

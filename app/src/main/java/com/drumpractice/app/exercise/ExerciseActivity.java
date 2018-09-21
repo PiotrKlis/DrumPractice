@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
-import com.drumpractice.app.exercise_list.ExerciseListActivity;
 import com.piotrklis.drumpractice.R;
 
 public class ExerciseActivity extends AppCompatActivity {
@@ -25,7 +24,7 @@ public class ExerciseActivity extends AppCompatActivity {
         if (savedInstanceState == null) {
             getSupportFragmentManager()
                     .beginTransaction()
-                    .replace(R.id.fragmentContainer, new ExcerciseFragment(), TAG)
+                    .replace(R.id.fragmentContainer, new ExerciseFragment(), TAG)
                     .commit();
         }
     }

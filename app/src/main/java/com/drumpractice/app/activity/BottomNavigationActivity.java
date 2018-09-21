@@ -10,8 +10,8 @@ import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.drumpractice.app.exercise.ExerciseActivity;
-import com.drumpractice.app.exercise_list.ExerciseListActivity;
+import com.drumpractice.app.exercise.ExerciseFragment;
+import com.drumpractice.app.exercise_list.ExerciseListFragment;
 import com.piotrklis.drumpractice.R;
 
 public class BottomNavigationActivity extends AppCompatActivity {
@@ -26,16 +26,18 @@ public class BottomNavigationActivity extends AppCompatActivity {
             switch (item.getItemId()) {
                 case R.id.navigation_exercise:
                     Toast.makeText(getApplicationContext(), "Exercise Screen", Toast.LENGTH_SHORT).show();
-                    ExerciseActivity.startActivity(getApplicationContext());
+                    ExerciseFragment.newInstance();
+                    return true;
                 case R.id.navigation_list_of_exercises:
                     Toast.makeText(getApplicationContext(), "List Screen", Toast.LENGTH_SHORT).show();
-                    ExerciseListActivity.startActivity(getApplicationContext());
+                    ExerciseListFragment.newInstance();
                     return true;
                 case R.id.navigation_settings:
-                    mTextMessage.setText(R.string.title_notifications);
+                    Toast.makeText(getApplicationContext(), "Settings Screen", Toast.LENGTH_SHORT).show();
                     return true;
+                default:
+                    return false;
             }
-            return false;
         }
     };
 
