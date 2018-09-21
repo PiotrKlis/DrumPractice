@@ -1,12 +1,8 @@
 package com.drumpractice.app.activity;
 
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
-import android.view.MenuItem;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.drumpractice.app.exercise.ExerciseFragment;
 import com.drumpractice.app.exercise_list.ExerciseListFragment;
@@ -14,51 +10,40 @@ import com.piotrklis.drumpractice.R;
 
 public class BottomNavigationActivity extends AppCompatActivity {
 
-    private TextView textMessage;
+    public static final int INITIAL_FRAGMENT = R.id.navigation_exercise;
 
-    private BottomNavigationView.OnNavigationItemSelectedListener navigationListener
-            = new BottomNavigationView.OnNavigationItemSelectedListener() {
-
-        @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-
-
-            switch (item.getItemId()) {
-                case R.id.navigation_exercise:
-
-                    getSupportFragmentManager()
-                            .beginTransaction()
-                            .replace(R.id.fragmentContainer, new ExerciseFragment())
-                            .commit();
-
-                    Toast.makeText(getApplicationContext(), "Exercise Screen", Toast.LENGTH_SHORT).show();
-                    ExerciseFragment.newInstance();
-                    return true;
-                case R.id.navigation_list_of_exercises:
-                    Toast.makeText(getApplicationContext(), "List Screen", Toast.LENGTH_SHORT).show();
-                    getSupportFragmentManager()
-                            .beginTransaction()
-                            .replace(R.id.fragmentContainer, new ExerciseListFragment())
-                            .commit();
-                    return true;
-                case R.id.navigation_settings:
-                    Toast.makeText(getApplicationContext(), "Settings Screen", Toast.LENGTH_SHORT).show();
-                    return true;
-                default:
-                    return false;
-            }
+    private boolean changeFragment(int id) {
+        switch (id) {
+            case R.id.navigation_exercise:
+                getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.fragmentContainer, new ExerciseFragment())
+                        .commit();
+                return true;
+            case R.id.navigation_list_of_exercises:
+                getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.fragmentContainer, new ExerciseListFragment())
+                        .commit();
+                return true;
+            case R.id.navigation_settings:
+                return true;
+            default:
+                return false;
         }
-    };
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bottom_navigation);
-        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
+        BottomNavigationView navigation = findViewById(R.id.navigation);
+        navigation.setOnNavigationItemSelectedListener(item -> changeFragment(item.getItemId()));
 
-        int firstScreenId = R.id.navigation_exercise;
-        navigation.setOnNavigationItemSelectedListener(navigationListener);
+        renderInitialFragment();
+    }
 
-
+    private void renderInitialFragment() {
+        changeFragment(INITIAL_FRAGMENT);
     }
 }
