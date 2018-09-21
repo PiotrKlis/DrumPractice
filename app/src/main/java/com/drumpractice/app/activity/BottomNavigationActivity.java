@@ -1,7 +1,5 @@
 package com.drumpractice.app.activity;
 
-import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -16,21 +14,32 @@ import com.piotrklis.drumpractice.R;
 
 public class BottomNavigationActivity extends AppCompatActivity {
 
-    private TextView mTextMessage;
+    private TextView textMessage;
 
-    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
+    private BottomNavigationView.OnNavigationItemSelectedListener navigationListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+
             switch (item.getItemId()) {
                 case R.id.navigation_exercise:
+
+                    getSupportFragmentManager()
+                            .beginTransaction()
+                            .replace(R.id.fragmentContainer, new ExerciseFragment())
+                            .commit();
+
                     Toast.makeText(getApplicationContext(), "Exercise Screen", Toast.LENGTH_SHORT).show();
                     ExerciseFragment.newInstance();
                     return true;
                 case R.id.navigation_list_of_exercises:
                     Toast.makeText(getApplicationContext(), "List Screen", Toast.LENGTH_SHORT).show();
-                    ExerciseListFragment.newInstance();
+                    getSupportFragmentManager()
+                            .beginTransaction()
+                            .replace(R.id.fragmentContainer, new ExerciseListFragment())
+                            .commit();
                     return true;
                 case R.id.navigation_settings:
                     Toast.makeText(getApplicationContext(), "Settings Screen", Toast.LENGTH_SHORT).show();
@@ -41,19 +50,15 @@ public class BottomNavigationActivity extends AppCompatActivity {
         }
     };
 
-    public static void startActivity(Context context) {
-        Intent intent = new Intent(context, BottomNavigationActivity.class);
-        context.startActivity(intent);
-    }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bottom_navigation);
-
-        mTextMessage = (TextView) findViewById(R.id.message);
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
-        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-    }
 
+        int firstScreenId = R.id.navigation_exercise;
+        navigation.setOnNavigationItemSelectedListener(navigationListener);
+
+
+    }
 }
