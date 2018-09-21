@@ -2,6 +2,7 @@ package com.drumpractice.app.activity;
 
 import android.os.Bundle;
 import android.support.design.widget.BottomNavigationView;
+import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 
 import com.drumpractice.app.exercise.ExerciseFragment;
@@ -11,27 +12,6 @@ import com.piotrklis.drumpractice.R;
 public class BottomNavigationActivity extends AppCompatActivity {
 
     public static final int INITIAL_FRAGMENT = R.id.navigation_exercise;
-
-    private boolean changeFragment(int id) {
-        switch (id) {
-            case R.id.navigation_exercise:
-                getSupportFragmentManager()
-                        .beginTransaction()
-                        .replace(R.id.fragmentContainer, new ExerciseFragment())
-                        .commit();
-                return true;
-            case R.id.navigation_list_of_exercises:
-                getSupportFragmentManager()
-                        .beginTransaction()
-                        .replace(R.id.fragmentContainer, new ExerciseListFragment())
-                        .commit();
-                return true;
-            case R.id.navigation_settings:
-                return true;
-            default:
-                return false;
-        }
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,5 +25,27 @@ public class BottomNavigationActivity extends AppCompatActivity {
 
     private void renderInitialFragment() {
         changeFragment(INITIAL_FRAGMENT);
+    }
+
+    private boolean changeFragment(int id) {
+        switch (id) {
+            case R.id.navigation_exercise:
+                navigateToFragment(new ExerciseFragment());
+                return true;
+            case R.id.navigation_list_of_exercises:
+                navigateToFragment(new ExerciseListFragment());
+                return true;
+            case R.id.navigation_settings:
+                return true;
+            default:
+                return false;
+        }
+    }
+
+    private void navigateToFragment(Fragment fragment) {
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.fragmentContainer, fragment)
+                .commit();
     }
 }
