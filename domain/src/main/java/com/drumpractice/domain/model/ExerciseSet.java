@@ -15,6 +15,9 @@ public class ExerciseSet {
         this.tempo = tempo;
     }
 
+    public ExerciseSet() {
+    }
+
     public int getTempo() {
         return tempo;
     }

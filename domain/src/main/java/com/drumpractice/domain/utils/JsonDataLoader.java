@@ -1,6 +1,6 @@
 package com.drumpractice.domain.utils;
-import io.reactivex.Observable;
+import io.reactivex.Maybe;
 
 public interface JsonDataLoader {
-   Observable loadData();
+   Maybe loadBundledData();
 }
