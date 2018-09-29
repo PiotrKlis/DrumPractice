@@ -1,9 +1,11 @@
 package com.drumpractice.external;
 
+import com.drumpractice.domain.ExerciseSetRepository;
 import com.drumpractice.domain.model.ExerciseSet;
 import com.drumpractice.domain.utils.JsonDataLoader;
 import com.drumpractice.external.dto.ExerciseSetDto;
 import com.drumpractice.external.helpers.BundledDataLoader;
+import com.drumpractice.external.helpers.DtoDataLoader;
 import com.drumpractice.external.repository.ExerciseSetRepositoryImpl;
 import com.drumpractice.external.storage.JsonDataStorage;
 
@@ -17,19 +19,19 @@ import io.reactivex.Maybe;
 
 public class JsonDataLoaderImpl implements JsonDataLoader {
     private final JsonDataStorage jsonDataStorage;
-    private final ExerciseSetRepositoryImpl exerciseSetRepository;
-    private final BundledDataLoader bundledDataLoader;
+    private final ExerciseSetRepository exerciseSetRepository;
+    private final DtoDataLoader dtoDataLoader;
 
     @Inject
-    public JsonDataLoaderImpl(JsonDataStorage jsonDataStorage, ExerciseSetRepositoryImpl exerciseSetRepository, BundledDataLoader bundledDataLoader) {
+    public JsonDataLoaderImpl(JsonDataStorage jsonDataStorage, ExerciseSetRepository exerciseSetRepository, DtoDataLoader dtoDataLoader) {
         this.jsonDataStorage = jsonDataStorage;
         this.exerciseSetRepository = exerciseSetRepository;
-        this.bundledDataLoader = bundledDataLoader;
+        this.dtoDataLoader = dtoDataLoader;
     }
 
     @Override
     public Maybe loadBundledData() {
-        return bundledDataLoader.loadExerciseSetsFromBundle()
+        return dtoDataLoader.loadExerciseSetsFromBundle()
                 .map(this::mapToDomain);
     }
 
