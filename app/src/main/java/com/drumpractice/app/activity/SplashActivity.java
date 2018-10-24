@@ -16,12 +16,12 @@ public class SplashActivity extends AppCompatActivity {
         if (savedInstanceState == null) {
             getSupportFragmentManager()
                     .beginTransaction()
-                    .replace(R.id.fragmentContainer, getSplashFragment())
+                    .replace(R.id.fragmentContainer, getFragment())
                     .commit();
         }
     }
 
-    private Fragment getSplashFragment() {
+    private Fragment getFragment() {
         return SplashFragment.newInstance();
     }
 }

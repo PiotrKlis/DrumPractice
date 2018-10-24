@@ -18,6 +18,7 @@ public class SplashFragment extends Fragment {
 
     private Unbinder unbinder;
     private CompositeDisposable subscriptions;
+    private SplashViewModel viewModel;
 
     public static Fragment newInstance() {
         return new SplashFragment();
@@ -34,5 +35,22 @@ public class SplashFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        createViewModel();
+        subscriptions.add(viewModel.shouldLoadJsonData()
+                .subscribe(shouldLoad -> {
+                    if (shouldLoad) {
+                        viewModel.loadJsonDataToDB();
+                    } else {
+                        getActivity().finish();
+                    }
+                }));
+
+    }
+
+    private SplashViewModel createViewModel() {
+        return viewModel = DaggerSplashComponent.builder()
+                .splashModule(new SplashComponent.SplashModule())
+                .build()
+                .splashViewModel();
     }
 }

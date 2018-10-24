@@ -1,20 +1,34 @@
 package com.drumpractice.app.di;
 
 import android.content.Context;
+import android.support.annotation.NonNull;
 
-import com.drumpractice.external.helpers.BundledDataLoader;
-import com.google.gson.Gson;
+import com.drumpractice.app.DrumPracticeApp;
 
 import javax.inject.Singleton;
 
 import dagger.Component;
+import dagger.Module;
+import dagger.Provides;
 
 @Singleton
-@Component(modules = {DrumPracticeAppModule.class})
+@Component(modules = {DrumPracticeAppComponent.DrumPracticeAppModule.class})
 public interface DrumPracticeAppComponent {
     Context getContext();
 
-    Gson getGson();
+    @Module
+    public class DrumPracticeAppModule {
 
-    BundledDataLoader getBundledDataLoader();
+        private final DrumPracticeApp application;
+
+        public DrumPracticeAppModule(@NonNull final DrumPracticeApp application) {
+            this.application = application;
+        }
+
+        @Provides
+        Context provideApplicationContext() {
+            return this.application;
+        }
+    }
+
 }

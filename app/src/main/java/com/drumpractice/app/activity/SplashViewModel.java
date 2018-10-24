@@ -7,28 +7,23 @@ import com.drumpractice.domain.utils.JsonDataLoader;
 
 import javax.inject.Inject;
 
-import io.reactivex.Maybe;
-import io.reactivex.Observable;
+import io.reactivex.Single;
 
 public class SplashViewModel {
 
-    private final Maybe<Boolean> shouldShowSplash;
+    private final Single<Boolean> shouldShowSplash;
 
     @Inject
     public SplashViewModel(@NonNull final JsonDataLoader jsonDataLoader,
                            @NonNull final ExerciseSetRepository exerciseSetRepository) {
         shouldShowSplash = exerciseSetRepository.isDatabaseEmpty()
-                .flatMap(isDatabaseEmpty -> {
-                    if (isDatabaseEmpty) {
-                        jsonDataLoader.loadBundledData();
-                        return Observable.just(true);
-                    } else {
-                        return Observable.just(false);
-                    }
-                }).singleElement();
+                .map(isDatabaseEmpty -> isDatabaseEmpty);
     }
 
-    public Maybe<Boolean> loadBundledData() {
+    public Single<Boolean> shouldLoadJsonData() {
         return shouldShowSplash;
+    }
+
+    public void loadJsonDataToDB() {
     }
 }

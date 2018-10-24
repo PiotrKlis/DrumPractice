@@ -2,6 +2,7 @@ package com.drumpractice.app;
 
 import android.app.Application;
 
+import com.drumpractice.app.di.DaggerDrumPracticeAppComponent;
 import com.drumpractice.app.di.DrumPracticeAppComponent;
 import com.drumpractice.external.RealmConnectionFactory;
 
@@ -19,18 +20,19 @@ public class DrumPracticeApp extends Application {
     }
 
     private void initializeInjector() {
-//        applicationComponent = DaggerDrumPracticeAppComponent.builder()
-//                .drumPracticeAppModule(new DrumPracticeAppModule(this))
-//                .build();
+        applicationComponent = DaggerDrumPracticeAppComponent.builder()
+                .drumPracticeAppModule(new DrumPracticeAppComponent.DrumPracticeAppModule(this))
+                .build();
     }
 
     @Override
     public void onCreate() {
         super.onCreate();
         context = this;
-        //initializeInjector();
+        initializeInjector();
         initializeRealm();
     }
+
     private void initializeRealm() {
         RealmConnectionFactory.initializeRealm(this);
     }

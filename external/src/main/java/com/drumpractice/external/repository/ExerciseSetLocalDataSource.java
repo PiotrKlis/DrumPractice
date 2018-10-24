@@ -3,8 +3,10 @@ package com.drumpractice.external.repository;
 import com.drumpractice.external.entities.ExerciseSetEntity;
 
 import javax.inject.Inject;
+import javax.inject.Singleton;
 
 import io.reactivex.Observable;
+import io.reactivex.Single;
 import io.realm.Realm;
 
 public class ExerciseSetLocalDataSource {
@@ -13,8 +15,8 @@ public class ExerciseSetLocalDataSource {
 
     }
 
-    public Observable<ExerciseSetEntity> findFirst() {
-        return Observable.fromCallable(() -> {
+    public Single<ExerciseSetEntity> findFirst() {
+        return Single.fromCallable(() -> {
             try (Realm realm = getRealmConnection()) {
                 return realm.copyFromRealm(realm.where(ExerciseSetEntity.class).findFirst());
             } catch (Throwable ex) {

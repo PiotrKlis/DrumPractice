@@ -9,7 +9,7 @@ import io.reactivex.Single;
 
 public interface ExerciseSetRepository {
 
-    Observable<Boolean> isDatabaseEmpty();
+    Single<Boolean> isDatabaseEmpty();
 
     Observable<List<ExerciseSet>> getExerciseSets();
 

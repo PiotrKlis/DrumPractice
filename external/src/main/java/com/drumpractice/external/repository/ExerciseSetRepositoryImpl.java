@@ -8,6 +8,7 @@ import java.util.List;
 import javax.inject.Inject;
 
 import io.reactivex.Observable;
+import io.reactivex.Single;
 
 public class ExerciseSetRepositoryImpl implements ExerciseSetRepository {
 
@@ -19,12 +20,10 @@ public class ExerciseSetRepositoryImpl implements ExerciseSetRepository {
     }
 
     @Override
-    public Observable<Boolean> isDatabaseEmpty() {
+    public Single<Boolean> isDatabaseEmpty() {
         return exerciseSetLocalDataSource.findFirst()
                 .map(exerciseSetEntity -> false)
-                .onErrorResumeNext(throwable -> {
-                    return Observable.just(true);
-                });
+                .onErrorResumeNext(throwable -> Single.just(true));
     }
 
     @Override
