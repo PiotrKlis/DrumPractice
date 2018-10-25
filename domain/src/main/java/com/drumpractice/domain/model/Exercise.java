@@ -3,9 +3,10 @@ package com.drumpractice.domain.model;
 
 public class Exercise {
 
-    private int time;
+    private long time;
     private String name;
     private int image;
+    private int id;
 
     public Exercise() {
     }
@@ -16,12 +17,20 @@ public class Exercise {
         this.image = image;
     }
 
-    public int getTime() {
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public long getTime() {
 
         return time;
     }
 
-    public void setTime(int time) {
+    public void setTime(long time) {
         this.time = time;
     }
 

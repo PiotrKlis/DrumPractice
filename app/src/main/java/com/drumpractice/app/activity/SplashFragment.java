@@ -39,12 +39,11 @@ public class SplashFragment extends Fragment {
         subscriptions.add(viewModel.shouldLoadJsonData()
                 .subscribe(shouldLoad -> {
                     if (shouldLoad) {
-                        viewModel.loadJsonDataToDB();
+                        viewModel.loadJsonDataToDB().subscribe();
                     } else {
                         getActivity().finish();
                     }
                 }));
-
     }
 
     private SplashViewModel createViewModel() {

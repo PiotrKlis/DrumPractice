@@ -3,12 +3,13 @@ package com.drumpractice.app.exercise_list;
 import com.drumpractice.domain.ExerciseSetRepository;
 import com.drumpractice.domain.usecase.FetchExerciseSetListUseCase;
 import com.drumpractice.external.repository.ExerciseSetLocalDataSource;
+import com.drumpractice.external.repository.ExerciseSetLocalDataSourceImpl;
 import com.drumpractice.external.repository.ExerciseSetRepositoryImpl;
 
 import dagger.Component;
 import dagger.Provides;
 
-@Component (modules = {ExerciseListComponent.ExerciseListModule.class})
+@Component(modules = {ExerciseListComponent.ExerciseListModule.class})
 public interface ExerciseListComponent {
 
     ExerciseListViewModel exerciseListViewModel();
@@ -24,6 +25,11 @@ public interface ExerciseListComponent {
         @Provides
         ExerciseSetRepository exerciseSetRepository(ExerciseSetLocalDataSource exerciseSetLocalDataSource) {
             return new ExerciseSetRepositoryImpl(exerciseSetLocalDataSource);
+        }
+
+        @Provides
+        ExerciseSetLocalDataSource exerciseSetLocalDataSource() {
+            return new ExerciseSetLocalDataSourceImpl();
         }
 
     }

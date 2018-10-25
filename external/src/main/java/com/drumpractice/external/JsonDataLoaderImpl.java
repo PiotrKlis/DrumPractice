@@ -24,6 +24,7 @@ import java.util.List;
 import javax.annotation.Nonnull;
 import javax.inject.Inject;
 
+import io.reactivex.Single;
 import io.realm.RealmList;
 
 
@@ -40,13 +41,14 @@ public class JsonDataLoaderImpl implements JsonDataLoader {
     }
 
     @Override
-    public void loadBundledExerciseSets() throws IOException {
+    public Single<Boolean> saveBundledExerciseSets() throws IOException {
         InputStream inputStream = exercisesSetsInputStreamProvider.openInputStream();
         List<ExerciseSetDto> exerciseSetDtos = readListFromStream(ExerciseSetDto.class, inputStream);
         List<ExerciseSetEntity> entity = mapDtosToEntities(exerciseSetDtos);
-        exerciseSetLocalDataSource.insert(entity);
 
         inputStream.close();
+
+        return Single.just(exerciseSetLocalDataSource.insert(entity));
     }
 
     private <T> List<T> readListFromStream(Type type, InputStream inputStream) throws UnsupportedEncodingException {
@@ -56,7 +58,7 @@ public class JsonDataLoaderImpl implements JsonDataLoader {
                 .fromJson(reader, TypeToken.getParameterized(ArrayList.class, type).getType());
     }
 
-    List<ExerciseSetEntity> mapDtosToEntities(List<ExerciseSetDto> dtos) {
+    private List<ExerciseSetEntity> mapDtosToEntities(List<ExerciseSetDto> dtos) {
         List<ExerciseSetEntity> entities = new ArrayList<>();
         for (ExerciseSetDto dto : dtos) {
             entities.add(mapToExternal(dto));
@@ -68,6 +70,7 @@ public class JsonDataLoaderImpl implements JsonDataLoader {
         ExerciseSetEntity setEntities = new ExerciseSetEntity();
         setEntities.setName(dto.getName());
         setEntities.setTempo(dto.getTempo());
+        setEntities.setId(dto.getId());
 
         RealmList<ExerciseEntity> exerciseEntities = getExerciseEntities(dto);
         setEntities.setExercises(exerciseEntities);
@@ -85,6 +88,7 @@ public class JsonDataLoaderImpl implements JsonDataLoader {
             exercise.setImage(exerciseDto.getImage());
             exercise.setName(exerciseDto.getName());
             exercise.setTime(exerciseDto.getTime());
+            exercise.setId(exerciseDto.getId());
             exerciseEntities.add(exercise);
         }
         return exerciseEntities;

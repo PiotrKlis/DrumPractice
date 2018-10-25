@@ -6,14 +6,16 @@ import com.drumpractice.external.entities.ExerciseSetEntity;
 import java.util.List;
 
 import io.reactivex.Observable;
+import io.reactivex.Single;
 
 public interface ExerciseSetLocalDataSource {
-    Observable<Boolean> isEmpty();
+    Single<Boolean> isEmpty();
 
     void clear(Class<ExerciseSetEntity> entity);
 
-    void insert(List<ExerciseSetEntity> entity);
+    Boolean insert(List<ExerciseSetEntity> entity);
 
     Observable<ExerciseSetEntity> findFirst();
 
+    Observable<List<ExerciseSetEntity>> getAllExerciseSets();
 }

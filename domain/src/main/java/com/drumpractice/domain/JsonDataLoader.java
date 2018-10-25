@@ -2,6 +2,8 @@ package com.drumpractice.domain;
 
 import java.io.IOException;
 
+import io.reactivex.Single;
+
 public interface JsonDataLoader {
-    void loadBundledExerciseSets() throws IOException;
+    Single<Boolean> saveBundledExerciseSets() throws IOException;
 }

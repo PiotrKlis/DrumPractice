@@ -1,16 +1,11 @@
 package com.drumpractice.app.exercise;
 
 import com.drumpractice.domain.model.ExerciseSet;
-import com.drumpractice.domain.usecase.FetchCurrentExercisSeteIdUseCase;
-import com.drumpractice.domain.usecase.FetchExerciseSetUseCase;
 
 import javax.inject.Inject;
 
-import io.reactivex.Notification;
 import io.reactivex.Observable;
 import io.reactivex.Single;
-import io.reactivex.annotations.NonNull;
-import io.reactivex.subjects.PublishSubject;
 
 public class ExerciseViewModel {
 
@@ -20,17 +15,18 @@ public class ExerciseViewModel {
     private int id;
 
     @Inject
-    public ExerciseViewModel(@NonNull final FetchExerciseSetUseCase fetchExerciseSetUseCase) {
-        PublishSubject<Irrelevant> exerciseSetTrigger = PublishSubject.create();
-        Observable<Notification<ExerciseSet>> materializedExerciseSet = exerciseSetTrigger
-                .startWith(Irrelevant.INSTANCE)
-                .flatMap(__ -> fetchExerciseSetUseCase.execute())
-                .materialize()
-                .share();
-
-        this.exerciseSet = materializedExerciseSet
-                .filter(Notification::isOnNext)
-                .map(Notification::getValue);
+    public ExerciseViewModel() {
+        //(@NonNull final FetchExerciseSetUseCase fetchExerciseSetUseCase) {
+//        PublishSubject<Irrelevant> exerciseSetTrigger = PublishSubject.create();
+//        Observable<Notification<ExerciseSet>> materializedExerciseSet = exerciseSetTrigger
+//                .startWith(Irrelevant.INSTANCE)
+//                .flatMap(__ -> fetchExerciseSetUseCase.execute())
+//                .materialize()
+//                .share();
+//
+//        this.exerciseSet = materializedExerciseSet
+//                .filter(Notification::isOnNext)
+//                .map(Notification::getValue);
 
     }
 

@@ -3,13 +3,20 @@ package com.drumpractice.external.entities;
 import io.realm.RealmObject;
 
 public class ExerciseEntity extends RealmObject {
-
+    private int id;
     private long time;
     private String name;
     private int image;
-
     public ExerciseEntity() {
 
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public long getTime() {

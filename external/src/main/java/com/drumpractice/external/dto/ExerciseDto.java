@@ -9,6 +9,12 @@ public class ExerciseDto {
     private String name;
     @SerializedName("Image")
     private int image;
+    @SerializedName("Id")
+    private int id;
+
+    public int getId() {
+        return id;
+    }
 
     public int getTime() {
         return time;

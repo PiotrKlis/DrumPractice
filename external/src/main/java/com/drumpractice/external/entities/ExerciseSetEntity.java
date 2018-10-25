@@ -5,12 +5,20 @@ import io.realm.RealmList;
 import io.realm.RealmObject;
 
 public class ExerciseSetEntity extends RealmObject {
+    private int id;
     private String name;
     private int tempo;
     private RealmList<ExerciseEntity> exercises;
-
     public ExerciseSetEntity() {
 
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {

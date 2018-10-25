@@ -32,8 +32,8 @@ public interface JsonLoaderComponent {
 
 
         @Provides
-        JsonDataLoader provideJsonDataLoader(JsonDataStorage jsonDataStorage, ExerciseSetRepository exerciseSetRepository, DtoDataLoader dtoDataLoader) {
-            return new JsonDataLoaderImpl(jsonDataStorage, exerciseSetRepository, dtoDataLoader, exercisesSetsInputStreamProvider);
+        JsonDataLoader provideJsonDataLoader(InputStreamProvider inputStreamProvider, ExerciseSetLocalDataSource exerciseSetRepository) {
+            return new JsonDataLoaderImpl(inputStreamProvider, exerciseSetRepository);
         }
 
         @Provides

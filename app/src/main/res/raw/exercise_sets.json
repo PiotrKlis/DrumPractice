@@ -1,42 +1,50 @@
 {
   "ExerciseSets": [
     {
+      "ExerciseSetId": 1,
       "ExerciseSetName": "Very First ExerciseSet",
-      "Tempo": "100",
+      "Tempo": 100,
       "Exercises": [
         {
-          "Time": "1000",
+          "ExerciseId": 1,
+          "Time": 1000,
           "ExerciseName": "First",
           "Image": "first"
         },
         {
-          "Time": "2000",
+          "ExerciseId": 2,
+          "Time": 2000,
           "ExerciseName": "Second",
           "Image": "second"
         },
         {
-          "Time": "1500",
+          "ExerciseId": 3,
+          "Time": 1500,
           "ExerciseName": "Third",
           "Image": "third"
         }
       ]
     },
     {
+      "ExerciseSetId": 2,
       "ExerciseSetName": "Second ExerciseSet",
-      "Tempo": "80",
+      "Tempo": 80,
       "Exercises": [
         {
-          "Time": "4000",
+          "ExerciseId": 4,
+          "Time": 4000,
           "ExerciseName": "FirstSecond",
           "Image": "firstsecond"
         },
         {
-          "Time": "2000",
+          "ExerciseId": 5,
+          "Time": 2000,
           "ExerciseName": "SecondSecond",
           "Image": "secondsecond"
         },
         {
-          "Time": "1500",
+          "ExerciseId": 6,
+          "Time": 1500,
           "ExerciseName": "ThirdSecond",
           "Image": "thirdsecond"
         }

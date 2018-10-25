@@ -5,6 +5,8 @@ import android.support.annotation.NonNull;
 import com.drumpractice.domain.ExerciseSetRepository;
 import com.drumpractice.domain.JsonDataLoader;
 
+import java.io.IOException;
+
 import javax.annotation.Nonnull;
 import javax.inject.Inject;
 
@@ -18,8 +20,7 @@ public class SplashViewModel {
     @Inject
     SplashViewModel(@NonNull final ExerciseSetRepository exerciseSetRepository,
                     @Nonnull final JsonDataLoader jsonDataLoader) {
-        shouldShowSplash = exerciseSetRepository.isDatabaseEmpty()
-                .map(isDatabaseEmpty -> isDatabaseEmpty);
+        this.shouldShowSplash = exerciseSetRepository.isDatabaseEmpty();
         this.jsonDataLoader = jsonDataLoader;
     }
 
@@ -27,7 +28,7 @@ public class SplashViewModel {
         return shouldShowSplash;
     }
 
-    void loadJsonDataToDB() {
-        jsonDataLoader.loadBundledExerciseSets();
+    Single<Boolean> loadJsonDataToDB() throws IOException {
+        return jsonDataLoader.saveBundledExerciseSets();
     }
 }

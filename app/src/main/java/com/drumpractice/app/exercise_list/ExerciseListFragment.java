@@ -51,7 +51,8 @@ public class ExerciseListFragment extends Fragment {
     }
 
     private void renderExerciseList(List<ExerciseSet> exerciseSets) {
-
+        List<ExerciseSet> exerciseSetList = exerciseSets;
+        int i = 0;
     }
 
     private ExerciseListViewModel createViewModel() {
