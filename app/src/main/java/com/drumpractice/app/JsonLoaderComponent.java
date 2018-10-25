@@ -28,7 +28,7 @@ public interface JsonLoaderComponent {
 
     @Module
     public class JsonLoaderModule {
-        private final int EXERCISES_SETS_JSON_RESOURCE = R.raw.exercises_sets;
+        private final int EXERCISES_SETS_JSON_RESOURCE = R.raw.exercise_sets;
 
 
         @Provides

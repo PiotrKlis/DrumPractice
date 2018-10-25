@@ -1,0 +1,46 @@
+{
+  "ExerciseSets": [
+    {
+      "ExerciseSetName": "Very First ExerciseSet",
+      "Tempo": "100",
+      "Exercises": [
+        {
+          "Time": "1000",
+          "ExerciseName": "First",
+          "Image": "first"
+        },
+        {
+          "Time": "2000",
+          "ExerciseName": "Second",
+          "Image": "second"
+        },
+        {
+          "Time": "1500",
+          "ExerciseName": "Third",
+          "Image": "third"
+        }
+      ]
+    },
+    {
+      "ExerciseSetName": "Second ExerciseSet",
+      "Tempo": "80",
+      "Exercises": [
+        {
+          "Time": "4000",
+          "ExerciseName": "FirstSecond",
+          "Image": "firstsecond"
+        },
+        {
+          "Time": "2000",
+          "ExerciseName": "SecondSecond",
+          "Image": "secondsecond"
+        },
+        {
+          "Time": "1500",
+          "ExerciseName": "ThirdSecond",
+          "Image": "thirdsecond"
+        }
+      ]
+    }
+  ]
+}
