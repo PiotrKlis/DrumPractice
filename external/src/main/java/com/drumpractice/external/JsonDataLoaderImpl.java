@@ -1,7 +1,11 @@
 package com.drumpractice.external;
 
+import android.support.annotation.NonNull;
+
 import com.drumpractice.domain.JsonDataLoader;
+import com.drumpractice.external.dto.ExerciseDto;
 import com.drumpractice.external.dto.ExerciseSetDto;
+import com.drumpractice.external.entities.ExerciseEntity;
 import com.drumpractice.external.entities.ExerciseSetEntity;
 import com.drumpractice.external.helpers.InputStreamProvider;
 import com.drumpractice.external.repository.ExerciseSetLocalDataSource;
@@ -20,6 +24,8 @@ import java.util.List;
 import javax.annotation.Nonnull;
 import javax.inject.Inject;
 
+import io.realm.RealmList;
+
 
 public class JsonDataLoaderImpl implements JsonDataLoader {
 
@@ -37,7 +43,7 @@ public class JsonDataLoaderImpl implements JsonDataLoader {
     public void loadBundledExerciseSets() throws IOException {
         InputStream inputStream = exercisesSetsInputStreamProvider.openInputStream();
         List<ExerciseSetDto> exerciseSetDtos = readListFromStream(ExerciseSetDto.class, inputStream);
-        List<ExerciseSetEntity> entity = mapDtosToEntities(List < ExerciseSetDto > exerciseSetDtos);
+        List<ExerciseSetEntity> entity = mapDtosToEntities(exerciseSetDtos);
         exerciseSetLocalDataSource.insert(entity);
 
         inputStream.close();
@@ -52,13 +58,35 @@ public class JsonDataLoaderImpl implements JsonDataLoader {
 
     List<ExerciseSetEntity> mapDtosToEntities(List<ExerciseSetDto> dtos) {
         List<ExerciseSetEntity> entities = new ArrayList<>();
-
         for (ExerciseSetDto dto : dtos) {
             entities.add(mapToExternal(dto));
         }
+        return entities;
     }
 
     private ExerciseSetEntity mapToExternal(ExerciseSetDto dto) {
-        ExerciseSetEntity entity = new ExerciseSetEntity();
+        ExerciseSetEntity setEntities = new ExerciseSetEntity();
+        setEntities.setName(dto.getName());
+        setEntities.setTempo(dto.getTempo());
+
+        RealmList<ExerciseEntity> exerciseEntities = getExerciseEntities(dto);
+        setEntities.setExercises(exerciseEntities);
+
+        return setEntities;
+    }
+
+    @NonNull
+    private RealmList<ExerciseEntity> getExerciseEntities(ExerciseSetDto dto) {
+        List<ExerciseDto> exerciseDtos = dto.getExercises();
+        RealmList<ExerciseEntity> exerciseEntities = new RealmList<>();
+
+        for (ExerciseDto exerciseDto : exerciseDtos) {
+            ExerciseEntity exercise = new ExerciseEntity();
+            exercise.setImage(exerciseDto.getImage());
+            exercise.setName(exerciseDto.getName());
+            exercise.setTime(exerciseDto.getTime());
+            exerciseEntities.add(exercise);
+        }
+        return exerciseEntities;
     }
 }

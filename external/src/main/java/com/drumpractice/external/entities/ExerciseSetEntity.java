@@ -5,7 +5,7 @@ import io.realm.RealmList;
 import io.realm.RealmObject;
 
 public class ExerciseSetEntity extends RealmObject {
-    private String exerciseSetName;
+    private String name;
     private int tempo;
     private RealmList<ExerciseEntity> exercises;
 
@@ -13,12 +13,12 @@ public class ExerciseSetEntity extends RealmObject {
 
     }
 
-    public String getExerciseSetName() {
-        return exerciseSetName;
+    public String getName() {
+        return name;
     }
 
-    public void setExerciseSetName(String exerciseSetName) {
-        this.exerciseSetName = exerciseSetName;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public int getTempo() {
