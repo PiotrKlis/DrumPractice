@@ -9,15 +9,17 @@ import io.reactivex.Single;
 
 public interface ExerciseSetRepository {
 
-    Single<Boolean> isDatabaseEmpty();
+    Observable<Boolean> isDatabaseEmpty();
 
     Observable<List<ExerciseSet>> getExerciseSets();
 
     Observable<ExerciseSet> getCurrentExerciseSet();
 
-    Observable<List<ExerciseSet>> saveExerciseSets();
+    Observable<List<ExerciseSet>> saveExerciseSets(List<ExerciseSet> exerciseSets);
 
     Observable<Integer> getSelectedExerciseId();
 
     Observable<Integer> setSelectedExerciseId();
+
+    void clear();
 }

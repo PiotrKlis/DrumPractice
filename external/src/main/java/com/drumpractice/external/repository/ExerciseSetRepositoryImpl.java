@@ -2,13 +2,13 @@ package com.drumpractice.external.repository;
 
 import com.drumpractice.domain.ExerciseSetRepository;
 import com.drumpractice.domain.model.ExerciseSet;
+import com.drumpractice.external.entities.ExerciseSetEntity;
 
 import java.util.List;
 
 import javax.inject.Inject;
 
 import io.reactivex.Observable;
-import io.reactivex.Single;
 
 public class ExerciseSetRepositoryImpl implements ExerciseSetRepository {
 
@@ -20,10 +20,12 @@ public class ExerciseSetRepositoryImpl implements ExerciseSetRepository {
     }
 
     @Override
-    public Single<Boolean> isDatabaseEmpty() {
+    public Observable<Boolean> isDatabaseEmpty() {
         return exerciseSetLocalDataSource.findFirst()
                 .map(exerciseSetEntity -> false)
-                .onErrorResumeNext(throwable -> Single.just(true));
+                .onErrorResumeNext(throwable -> {
+                    return Observable.just(true);
+                });
     }
 
     @Override
@@ -38,8 +40,8 @@ public class ExerciseSetRepositoryImpl implements ExerciseSetRepository {
     }
 
     @Override
-    public Observable<List<ExerciseSet>> saveExerciseSets() {
-        return null;
+    public Observable<List<ExerciseSet>> saveExerciseSets(List<ExerciseSetEntity> exerciseSets) {
+        exerciseSetLocalDataSource.save(exerciseSets);
     }
 
     @Override
@@ -50,5 +52,10 @@ public class ExerciseSetRepositoryImpl implements ExerciseSetRepository {
     @Override
     public Observable<Integer> setSelectedExerciseId() {
         return null;
+    }
+
+    @Override
+    public void clear() {
+        exerciseSetLocalDataSource.clear(ExerciseSetEntity.class);
     }
 }

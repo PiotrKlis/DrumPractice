@@ -4,7 +4,7 @@ import android.content.Context;
 
 import com.drumpractice.app.JsonLoaderComponent.JsonLoaderModule;
 import com.drumpractice.domain.ExerciseSetRepository;
-import com.drumpractice.domain.utils.JsonDataLoader;
+import com.drumpractice.domain.JsonDataLoader;
 import com.drumpractice.external.JsonDataLoaderImpl;
 import com.drumpractice.external.StringFileReader;
 import com.drumpractice.external.helpers.BundledDataLoader;
@@ -33,7 +33,7 @@ public interface JsonLoaderComponent {
 
         @Provides
         JsonDataLoader provideJsonDataLoader(JsonDataStorage jsonDataStorage, ExerciseSetRepository exerciseSetRepository, DtoDataLoader dtoDataLoader) {
-            return new JsonDataLoaderImpl(jsonDataStorage, exerciseSetRepository, dtoDataLoader);
+            return new JsonDataLoaderImpl(jsonDataStorage, exerciseSetRepository, dtoDataLoader, exercisesSetsInputStreamProvider);
         }
 
         @Provides

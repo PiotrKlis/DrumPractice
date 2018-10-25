@@ -1,51 +1,64 @@
 package com.drumpractice.external;
 
-import com.drumpractice.domain.ExerciseSetRepository;
-import com.drumpractice.domain.model.ExerciseSet;
-import com.drumpractice.domain.utils.JsonDataLoader;
+import com.drumpractice.domain.JsonDataLoader;
 import com.drumpractice.external.dto.ExerciseSetDto;
-import com.drumpractice.external.helpers.BundledDataLoader;
-import com.drumpractice.external.helpers.DtoDataLoader;
-import com.drumpractice.external.repository.ExerciseSetRepositoryImpl;
-import com.drumpractice.external.storage.JsonDataStorage;
+import com.drumpractice.external.entities.ExerciseSetEntity;
+import com.drumpractice.external.helpers.InputStreamProvider;
+import com.drumpractice.external.repository.ExerciseSetLocalDataSource;
+import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.Nonnull;
 import javax.inject.Inject;
-
-import io.reactivex.Maybe;
 
 
 public class JsonDataLoaderImpl implements JsonDataLoader {
-    private final JsonDataStorage jsonDataStorage;
-    private final ExerciseSetRepository exerciseSetRepository;
-    private final DtoDataLoader dtoDataLoader;
+
+    private static final String CHARSET_NAME = "UTF-8";
+    private final InputStreamProvider exercisesSetsInputStreamProvider;
+    private final ExerciseSetLocalDataSource exerciseSetLocalDataSource;
 
     @Inject
-    public JsonDataLoaderImpl(JsonDataStorage jsonDataStorage, ExerciseSetRepository exerciseSetRepository, DtoDataLoader dtoDataLoader) {
-        this.jsonDataStorage = jsonDataStorage;
-        this.exerciseSetRepository = exerciseSetRepository;
-        this.dtoDataLoader = dtoDataLoader;
+    public JsonDataLoaderImpl(@Nonnull final InputStreamProvider exercisesSetsInputStreamProvider, ExerciseSetLocalDataSource exerciseSetLocalDataSource) {
+        this.exercisesSetsInputStreamProvider = exercisesSetsInputStreamProvider;
+        this.exerciseSetLocalDataSource = exerciseSetLocalDataSource;
     }
 
     @Override
-    public Maybe loadBundledData() {
-        return dtoDataLoader.loadExerciseSetsFromBundle()
-                .map(this::mapToDomain);
+    public void loadBundledExerciseSets() throws IOException {
+        InputStream inputStream = exercisesSetsInputStreamProvider.openInputStream();
+        List<ExerciseSetDto> exerciseSetDtos = readListFromStream(ExerciseSetDto.class, inputStream);
+        List<ExerciseSetEntity> entity = mapDtosToEntities(List < ExerciseSetDto > exerciseSetDtos);
+        exerciseSetLocalDataSource.insert(entity);
+
+        inputStream.close();
     }
 
-    private List<ExerciseSet> mapToDomain(List<ExerciseSetDto> exerciseSetDtos) {
-        List<ExerciseSet> setList = new ArrayList<>();
+    private <T> List<T> readListFromStream(Type type, InputStream inputStream) throws UnsupportedEncodingException {
+        JsonReader reader = new JsonReader(new InputStreamReader(inputStream, CHARSET_NAME));
+        return new GsonBuilder()
+                .create()
+                .fromJson(reader, TypeToken.getParameterized(ArrayList.class, type).getType());
+    }
 
-        for (ExerciseSetDto dto : exerciseSetDtos) {
-            ExerciseSet exerciseSet = new ExerciseSet();
-            exerciseSet.setId(dto.getId());
-            exerciseSet.setExercise(dto.getExercises());
-            exerciseSet.setName(dto.getExerciseSetName());
-            exerciseSet.setTempo(dto.getTempo());
-            setList.add(exerciseSet);
+    List<ExerciseSetEntity> mapDtosToEntities(List<ExerciseSetDto> dtos) {
+        List<ExerciseSetEntity> entities = new ArrayList<>();
+
+        for (ExerciseSetDto dto : dtos) {
+            entities.add(mapToExternal(dto));
         }
-        return setList;
+    }
+
+    private ExerciseSetEntity mapToExternal(ExerciseSetDto dto) {
+        ExerciseSetEntity entity = new ExerciseSetEntity();
     }
 }

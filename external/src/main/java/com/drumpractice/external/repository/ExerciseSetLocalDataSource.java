@@ -1,32 +1,19 @@
 package com.drumpractice.external.repository;
 
+
 import com.drumpractice.external.entities.ExerciseSetEntity;
 
-import javax.inject.Inject;
-import javax.inject.Singleton;
+import java.util.List;
 
 import io.reactivex.Observable;
-import io.reactivex.Single;
-import io.realm.Realm;
 
-public class ExerciseSetLocalDataSource {
-    @Inject
-    public ExerciseSetLocalDataSource() {
+public interface ExerciseSetLocalDataSource {
+    Observable<Boolean> isEmpty();
 
-    }
+    void clear(Class<ExerciseSetEntity> entity);
 
-    public Single<ExerciseSetEntity> findFirst() {
-        return Single.fromCallable(() -> {
-            try (Realm realm = getRealmConnection()) {
-                return realm.copyFromRealm(realm.where(ExerciseSetEntity.class).findFirst());
-            } catch (Throwable ex) {
-                throw ex;
-            }
-        });
-    }
+    void insert(List<ExerciseSetEntity> entity);
 
-    private Realm getRealmConnection() {
-        return Realm.getDefaultInstance();
-    }
+    Observable<ExerciseSetEntity> findFirst();
+
 }
-
