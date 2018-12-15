@@ -12,6 +12,7 @@ import com.piotrklis.drumpractice.R;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
+import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 
 public class SplashFragment extends Fragment {
@@ -37,13 +38,16 @@ public class SplashFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
         createViewModel();
         subscriptions.add(viewModel.shouldLoadJsonData()
+                .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(shouldLoad -> {
                     if (shouldLoad) {
-                        viewModel.loadJsonDataToDB().subscribe();
+                        viewModel.loadJsonDataToDB();
                     } else {
                         getActivity().finish();
                     }
                 }));
+
+        subscriptions.add(viewModel.finishScreen().subscribe());
     }
 
     private SplashViewModel createViewModel() {

@@ -1,5 +1,7 @@
 package com.drumpractice.app.activity;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
@@ -12,6 +14,11 @@ import com.piotrklis.drumpractice.R;
 public class BottomNavigationActivity extends AppCompatActivity {
 
     public static final int INITIAL_FRAGMENT = R.id.navigation_exercise;
+
+    public static void startActivity(Context context) {
+        Intent intent = new Intent(context, BottomNavigationActivity.class);
+        context.startActivity(intent);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

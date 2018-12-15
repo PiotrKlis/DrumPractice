@@ -17,7 +17,6 @@ public interface SplashComponent {
     @Module
     class SplashModule {
 
-
         @Provides
         ExerciseSetLocalDataSource exerciseSetLocalDataSource() {
             return new ExerciseSetLocalDataSourceImpl();

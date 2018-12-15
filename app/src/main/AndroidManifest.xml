@@ -10,12 +10,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.drumpractice.app.exercise.ExerciseActivity" />
-        <activity android:name="com.drumpractice.app.exercise_list.ExerciseListActivity" />
-        <activity
-            android:name="com.drumpractice.app.activity.BottomNavigationActivity"
-            android:label="Dupa"
-            android:screenOrientation="portrait">
+        <activity android:name="com.drumpractice.app.activity.BottomNavigationActivity" />
+        <activity android:name="com.drumpractice.app.activity.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

@@ -17,7 +17,7 @@ public interface DrumPracticeAppComponent {
     Context getContext();
 
     @Module
-    public class DrumPracticeAppModule {
+    class DrumPracticeAppModule {
 
         private final DrumPracticeApp application;
 
@@ -30,5 +30,4 @@ public interface DrumPracticeAppComponent {
             return this.application;
         }
     }
-
 }
